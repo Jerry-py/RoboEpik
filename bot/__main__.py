@@ -109,9 +109,11 @@ async def anonymous_help_modal_submit(
     ]
     await interaction.reply(embeds=embed, ephemeral=True)
     thread = await (await client.channels.fetch(interaction.channel_id)).start_thread(
-        issue_description[:100]
-        if len(issue_description) <= 100
-        else f"{issue_description[:97]}...",
+        (
+            issue_description[:100]
+            if len(issue_description) <= 100
+            else f"{issue_description[:97]}..."
+        ),
         type=11,
     )
 
